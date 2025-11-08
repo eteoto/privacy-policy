@@ -8,6 +8,19 @@ https://eteoto.github.io/privacy-policy/
 
 新しいサービスのプライバシーポリシーを追加する場合は、以下の手順に従ってください。
 
+### 0. 作業ブランチの作成
+
+mainブランチから新しいブランチを切って作業します：
+
+```bash
+# mainブランチに切り替え、最新の状態に更新
+git checkout main
+git pull origin main
+
+# 新しいブランチを作成して切り替え
+git checkout -b add-privacy-policy-[service-name]
+```
+
 ### 1. プライバシーポリシードキュメントの作成
 
 `docs/` ディレクトリに新しいMarkdownファイルを作成します。
@@ -59,10 +72,26 @@ touch docs/[service-name].md
 ```bash
 git add .
 git commit -m "Add privacy policy for [service-name]"
-git push
+git push origin add-privacy-policy-[service-name]
 ```
 
-### 5. GitHub Pages での反映確認
+### 5. プルリクエストの作成
+
+GitHubでプルリクエストを作成します：
+
+1. GitHubのリポジトリページにアクセス
+2. 「Compare & pull request」ボタンをクリック
+3. プルリクエストのタイトルと説明を記入
+   - タイトル例: `Add privacy policy for [service-name]`
+   - 説明例: `[service-name]アプリのプライバシーポリシーを追加`
+4. 「Create pull request」をクリック
+
+### 6. プルリクエストのレビューとマージ
+
+1. 必要に応じてレビューを受ける
+2. 問題がなければ「Squash and merge」でmainブランチにマージ
+
+### 7. GitHub Pages での反映確認
 
 数分後に https://eteoto.github.io/privacy-policy/ にアクセスして、新しいプライバシーポリシーが正しく表示されることを確認します。
 
@@ -80,5 +109,6 @@ git push
 
 ## 注意事項
 
+- **ブランチ運用**: 変更は必ず作業ブランチで行い、プルリクエストを通してmainブランチにマージしてください
 - GitHub Pages の設定で、`docs` フォルダがドキュメントルートに設定されています
 - プライバシーポリシーの内容は、各サービスの実際の機能に応じて適切に記述してください
