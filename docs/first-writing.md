@@ -1,0 +1,58 @@
+# プライバシーポリシー  
+**書き初め抱負 – 三が日で決める一年で叶える**
+
+最終更新日：2025年11月8日  
+開発者：Eteoto
+
+---
+
+## 1. 個人情報の収集について
+本アプリは、ユーザーの個人情報を一切収集しません。  
+名前、メールアドレス、位置情報など、個人を特定できる情報は取得しておりません。
+
+---
+
+## 2. データの保存について
+本アプリで作成された画像データは、**すべてユーザーの端末内にのみ保存**されます。  
+外部サーバーやクラウドに送信されることはありません。
+
+---
+
+## 3. 共有機能について
+アプリ内で作成した画像は、ユーザー自身の操作によって端末に保存・共有することができます。  
+この共有機能は、SNSなどの外部アプリを起動する形式であり、**本アプリが外部サービスへ直接データを送信することはありません。**
+
+---
+
+## 4. 広告・解析ツールについて
+本アプリでは、**広告表示およびアクセス解析ツール（Google Analytics、Firebase、Crashlyticsなど）を一切使用していません。**
+
+---
+
+## 5. セキュリティについて
+本アプリはすべてのデータを端末内で処理しますが、端末の紛失や第三者による不正アクセスについては責任を負いかねます。  
+端末の管理には十分ご注意ください。
+
+---
+
+## 6. 改定について
+本プライバシーポリシーの内容は、必要に応じて予告なく変更される場合があります。  
+最新の内容はアプリ内または配信ページに掲載いたします。
+
+---
+
+## 7. お問い合わせ
+本アプリおよび本ポリシーに関するお問い合わせは、以下までご連絡ください。  
+**Eメール：** eteoto.tk@gmail.com
+
+---
+
+### 🇬🇧 Privacy Policy (English Summary)
+
+**App:** *Kakizome Houfu – New Year’s Resolution Calligraphy*  
+**Developer:** Eteoto  
+
+- No personal data is collected.  
+- All created images are stored locally on the user’s device.  
+- No analytics or advertising SDKs are used.  
+- Sharing features only open external apps; the app never uploads data by itself.  
