@@ -2,6 +2,8 @@
 
 https://eteoto.github.io/privacy-policy/
 
+<img width="829" height="463" alt="image" src="https://github.com/user-attachments/assets/3636e87c-1ee8-45af-8c5f-19a14c7592f5" />
+
 このリポジトリは、各サービス・アプリのプライバシーポリシーを管理・公開するためのものです。
 
 ## プライバシーポリシーの追加方法
