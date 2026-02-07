@@ -40,11 +40,3 @@
 **Eメール：** eteoto.tk@gmail.com
 
 ---
-
-
-**App:** *Shizukana-Hondana*  
-**Developer:** Eteoto  
-
-- No personal data is collected.  
-- No analytics or advertising SDKs are used.  
-- Sharing features only open external apps; the app never uploads data by itself.  
