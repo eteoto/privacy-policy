@@ -1,0 +1,48 @@
+name: Discord Notify
+
+on:
+  pull_request:
+    types: [opened, closed, reopened, labeled, assigned]
+  pull_request_review:
+    types: [submitted]
+  pull_request_review_comment:
+    types: [created]
+  issues:
+    types: [opened, deleted, closed, labeled, assigned]
+  issue_comment:
+    types: [created]
+  discussion:
+    types: [created, deleted]
+  discussion_comment:
+    types: [created]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: eteoto/automation
+          token: ${{ secrets.AUTOMATION_READ_TOKEN }}
+
+      - name: Load member map
+        id: members
+        run: |
+          python3 -c "
+          import yaml, json
+          with open('config/members.yml') as f:
+              data = yaml.safe_load(f)
+          mapping = {m['name']: m['discord_user_id'] for m in data.get('members', []) if 'discord_user_id' in m}
+          print('member_map=' + json.dumps(mapping))
+          " >> $GITHUB_OUTPUT
+
+      - uses: actions/github-script@v7
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_GITHUB_WEBHOOK_URL }}
+          MEMBER_MAP: ${{ steps.members.outputs.member_map }}
+        with:
+          script: |
+            const notify = require('./scripts/discord_notify.js')
+            await notify({ context, core })
