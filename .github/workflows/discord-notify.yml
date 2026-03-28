@@ -2,7 +2,7 @@ name: Discord Notify
 
 on:
   pull_request:
-    types: [opened, closed, reopened, labeled, assigned]
+    types: [opened, closed, reopened, labeled, assigned, review_requested, ready_for_review]
   pull_request_review:
     types: [submitted]
   pull_request_review_comment:
@@ -15,6 +15,9 @@ on:
     types: [created, deleted]
   discussion_comment:
     types: [created]
+  workflow_run:
+    workflows: ["*"]
+    types: [completed]
 
 jobs:
   notify:
@@ -38,11 +41,27 @@ jobs:
           print('member_map=' + json.dumps(mapping))
           " >> $GITHUB_OUTPUT
 
+      - name: Restore Discord thread cache
+        id: thread-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: /tmp/discord-threads
+          key: discord-threads-${{ github.repository }}-${{ github.run_id }}
+          restore-keys: discord-threads-${{ github.repository }}-
+
       - uses: actions/github-script@v7
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_GITHUB_WEBHOOK_URL }}
           MEMBER_MAP: ${{ steps.members.outputs.member_map }}
+          DISCORD_THREADS_FILE: /tmp/discord-threads/threads.json
         with:
           script: |
             const notify = require('./scripts/discord_notify.js')
             await notify({ context, core })
+
+      - name: Save Discord thread cache
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: /tmp/discord-threads
+          key: discord-threads-${{ github.repository }}-${{ github.run_id }}
